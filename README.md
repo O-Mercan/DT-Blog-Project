@@ -1,91 +1,91 @@
-# ASP.NET Core MVC Blog Projesi - [Doğuş-Teknoloji]
+# ASP.NET Core MVC Blog Projesi - DoÄŸuÅŸ-Teknoloji
 
-Bu proje, Doğuş Teknoloji kapsamında geliştirilmiş, ASP.NET Core MVC teknolojileri kullanılarak oluşturulmuş temel özelliklere sahip bir blog sitesidir.
+Bu proje, DoÄŸuÅŸ Teknoloji kapsamÄ±nda geliÅŸtirilmiÅŸ, ASP.NET Core MVC teknolojileri kullanÄ±larak oluÅŸturulmuÅŸ temel Ã¶zelliklere sahip bir blog sitesidir.
 
-## Proje Hakkında
+## Proje HakkÄ±nda
 
-Bu blog sitesi, kullanıcıların kayıt olup giriş yapabildiği, blog yazıları oluşturup yönetebildiği ve diğer kullanıcıların yazılarını okuyup yorum yapabildiği bir platform sunar. Proje, MVC mimarisi, Entity Framework Core, ASP.NET Core Identity ve Repository Pattern gibi modern .NET teknolojileri ve tasarım desenleri kullanılarak geliştirilmiştir.
+Bu blog sitesi, kullanÄ±cÄ±larÄ±n kayÄ±t olup giriÅŸ yapabildiÄŸi, blog yazÄ±larÄ± oluÅŸturup yÃ¶netebildiÄŸi ve diÄŸer kullanÄ±cÄ±larÄ±n yazÄ±larÄ±nÄ± okuyup yorum yapabildiÄŸi bir platform sunar. Proje, MVC mimarisi, Entity Framework Core, ASP.NET Core Identity ve Repository Pattern gibi modern .NET teknolojileri ve tasarÄ±m desenleri kullanÄ±larak geliÅŸtirilmiÅŸtir.
 
-## Özellikler
+## Ã–zellikler
 
-*   **Kullanıcı Yönetimi:**
-    *   Kullanıcı Kayıt, Giriş ve Çıkış işlemleri (ASP.NET Core Identity)
-    *   Şifre sıfırlama/yönetimi (Identity'nin varsayılan özellikleri)
+*   **KullanÄ±cÄ± YÃ¶netimi:**
+    *   KullanÄ±cÄ± KayÄ±t, GiriÅŸ ve Ã‡Ä±kÄ±ÅŸ iÅŸlemleri (ASP.NET Core Identity)
+    *   Åifre sÄ±fÄ±rlama/yÃ¶netimi (Identity'nin varsayÄ±lan Ã¶zellikleri)
 *   **Yetkilendirme:**
-    *   Sadece giriş yapmış kullanıcılar yeni yazı ekleyebilir, kendi yazılarını düzenleyebilir ve silebilir.
-    *   Sadece giriş yapmış kullanıcılar yorum yapabilir.
-    *   Misafir kullanıcılar yazıları ve yorumları okuyabilir.
-*   **Blog Yönetimi:**
-    *   Blog yazıları için CRUD (Oluşturma, Okuma, Güncelleme, Silme) işlemleri.
-    *   Yazı Alanları: Başlık, İçerik, Yayınlanma Tarihi, Yazar Bilgisi, Kategori.
+    *   Sadece giriÅŸ yapmÄ±ÅŸ kullanÄ±cÄ±lar yeni yazÄ± ekleyebilir, kendi yazÄ±larÄ±nÄ± dÃ¼zenleyebilir ve silebilir.
+    *   Sadece giriÅŸ yapmÄ±ÅŸ kullanÄ±cÄ±lar yorum yapabilir.
+    *   Misafir kullanÄ±cÄ±lar yazÄ±larÄ± ve yorumlarÄ± okuyabilir.
+*   **Blog YÃ¶netimi:**
+    *   Blog yazÄ±larÄ± iÃ§in CRUD (OluÅŸturma, Okuma, GÃ¼ncelleme, Silme) iÅŸlemleri.
+    *   YazÄ± AlanlarÄ±: BaÅŸlÄ±k, Ä°Ã§erik, YayÄ±nlanma Tarihi, Yazar Bilgisi, Kategori.
 *   **Kategoriler:**
-    *   Yazılar için kategori sistemi.
-    *   Anasayfada kategoriye göre filtreleme.
+    *   YazÄ±lar iÃ§in kategori sistemi.
+    *   Anasayfada kategoriye gÃ¶re filtreleme.
 *   **Yorumlar:**
-    *   Kullanıcıların blog yazılarına yorum bırakabilmesi.
-    *   Yorumların yazı detay sayfasında gösterilmesi.
-*   **Görsel Yükleme (Opsiyonel):**
-    *   Blog yazılarına görsel yükleme ve gösterme özelliği.
+    *   KullanÄ±cÄ±larÄ±n blog yazÄ±larÄ±na yorum bÄ±rakabilmesi.
+    *   YorumlarÄ±n yazÄ± detay sayfasÄ±nda gÃ¶sterilmesi.
+*   **GÃ¶rsel YÃ¼kleme (Opsiyonel):**
+    *   Blog yazÄ±larÄ±na gÃ¶rsel yÃ¼kleme ve gÃ¶sterme Ã¶zelliÄŸi.
 *   **UI/UX:**
-    *   Bootstrap kullanılarak oluşturulmuş responsive tasarım.
-    *   Temiz ve kullanıcı dostu arayüz.
+    *   Bootstrap kullanÄ±larak oluÅŸturulmuÅŸ responsive tasarÄ±m.
+    *   Temiz ve kullanÄ±cÄ± dostu arayÃ¼z.
 
-## Kullanılan Teknolojiler
+## KullanÄ±lan Teknolojiler
 
 *   **Backend:**
-    *   ASP.NET Core MVC ([.NET Sürümünüz, örn. .NET 6/7/8])
-    *   Entity Framework Core ([Sürüm]) - ORM
+    *   ASP.NET Core MVC ([.NET SÃ¼rÃ¼mÃ¼nÃ¼z, Ã¶rn. .NET 6/7/8])
+    *   Entity Framework Core ([SÃ¼rÃ¼m]) - ORM
     *   ASP.NET Core Identity - Authentication & Authorization
-    *   Repository Pattern - Veri Erişim Katmanı Soyutlaması
-    *   Dependency Injection - Bağımlılık Yönetimi
-*   **Veritabanı:**
-    *   SQL Server [veya kullandığınız diğer DB: PostgreSQL, SQLite]
-    *   EF Core Migrations - Veritabanı Şeması Yönetimi
+    *   Repository Pattern - Veri EriÅŸim KatmanÄ± SoyutlamasÄ±
+    *   Dependency Injection - BaÄŸÄ±mlÄ±lÄ±k YÃ¶netimi
+*   **VeritabanÄ±:**
+    *   SQL Server [veya kullandÄ±ÄŸÄ±nÄ±z diÄŸer DB: PostgreSQL, SQLite]
+    *   EF Core Migrations - VeritabanÄ± ÅemasÄ± YÃ¶netimi
 *   **Frontend:**
     *   Razor Views
     *   HTML5 / CSS3
-    *   Bootstrap ([Sürüm]) - CSS Framework
-    *   JavaScript / jQuery (Varsayılan template ile gelir)
-*   **Diğer:**
-    *   LibMan (İstemci Kütüphane Yönetimi)
-    *   SOLID Prensipleri (Tasarım hedefi)
+    *   Bootstrap ([SÃ¼rÃ¼m]) - CSS Framework
+    *   JavaScript / jQuery (VarsayÄ±lan template ile gelir)
+*   **DiÄŸer:**
+    *   LibMan (Ä°stemci KÃ¼tÃ¼phane YÃ¶netimi)
+    *   SOLID Prensipleri (TasarÄ±m hedefi)
 
-## Kurulum ve Çalıştırma
+## Kurulum ve Ã‡alÄ±ÅŸtÄ±rma
 
-Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları takip edebilirsiniz:
+Projeyi yerel makinenizde Ã§alÄ±ÅŸtÄ±rmak iÃ§in aÅŸaÄŸÄ±daki adÄ±mlarÄ± takip edebilirsiniz:
 
-1.  **Ön Koşullar:**
-    *   [.NET SDK](https://dotnet.microsoft.com/download) ([Kullandığınız Sürüm])
-    *   [SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads) (veya kullandığınız veritabanı motoru)
+1.  **Ã–n KoÅŸullar:**
+    *   [.NET SDK](https://dotnet.microsoft.com/download) ([KullandÄ±ÄŸÄ±nÄ±z SÃ¼rÃ¼m])
+    *   [SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads) (veya kullandÄ±ÄŸÄ±nÄ±z veritabanÄ± motoru)
     *   Bir IDE (Visual Studio, VS Code, Rider vb.) veya .NET CLI
 
 2.  **Repository'yi Klonlama:**
     ```bash
-    git clone https://github.com/[GitHubKullanıcıAdınız]/[RepoAdınız].git
-    cd [RepoAdınız]
+    git clone https://github.com/[GitHubKullanÄ±cÄ±AdÄ±nÄ±z]/[RepoAdÄ±nÄ±z].git
+    cd [RepoAdÄ±nÄ±z]
     ```
 
-3.  **Veritabanı Bağlantısı:**
-    *   `appsettings.json` (veya gizli tutuluyorsa `appsettings.Development.json` / User Secrets) dosyasını açın.
-    *   `ConnectionStrings` bölümündeki `"DefaultConnection"` değerini kendi yerel veritabanı bağlantı cümlenizle güncelleyin. Örnek:
+3.  **VeritabanÄ± BaÄŸlantÄ±sÄ±:**
+    *   `appsettings.json` (veya gizli tutuluyorsa `appsettings.Development.json` / User Secrets) dosyasÄ±nÄ± aÃ§Ä±n.
+    *   `ConnectionStrings` bÃ¶lÃ¼mÃ¼ndeki `"DefaultConnection"` deÄŸerini kendi yerel veritabanÄ± baÄŸlantÄ± cÃ¼mlenizle gÃ¼ncelleyin. Ã–rnek:
         ```json
         "ConnectionStrings": {
           "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=BlogDbStudyCase;Trusted_Connection=True;MultipleActiveResultSets=true"
         }
         ```
 
-4.  **Veritabanı Migrations:**
-    *   Veritabanını ve tabloları oluşturmak/güncellemek için aşağıdaki komutu Package Manager Console (Visual Studio'da `Tools > NuGet Package Manager > Package Manager Console`) veya projenin kök dizininde bir terminalde çalıştırın:
+4.  **VeritabanÄ± Migrations:**
+    *   VeritabanÄ±nÄ± ve tablolarÄ± oluÅŸturmak/gÃ¼ncellemek iÃ§in aÅŸaÄŸÄ±daki komutu Package Manager Console (Visual Studio'da `Tools > NuGet Package Manager > Package Manager Console`) veya projenin kÃ¶k dizininde bir terminalde Ã§alÄ±ÅŸtÄ±rÄ±n:
         ```powershell
         dotnet ef database update
         ```
-        *(Eğer `Migrations` klasörü reponuzda yoksa veya ilk kez siz oluşturacaksanız, önce `dotnet ef migrations add InitialCreate` gibi bir komutla migration oluşturmanız gerekebilir.)*
-    *   Bu işlem, `Comment` tablosu dahil tüm tabloları ve ilişkileri oluşturacak ve varsa Seed Data'yı (örn. Kategoriler) ekleyecektir.
+        *(EÄŸer `Migrations` klasÃ¶rÃ¼ reponuzda yoksa veya ilk kez siz oluÅŸturacaksanÄ±z, Ã¶nce `dotnet ef migrations add InitialCreate` gibi bir komutla migration oluÅŸturmanÄ±z gerekebilir.)*
+    *   Bu iÅŸlem, `Comment` tablosu dahil tÃ¼m tablolarÄ± ve iliÅŸkileri oluÅŸturacak ve varsa Seed Data'yÄ± (Ã¶rn. Kategoriler) ekleyecektir.
 
-5.  **Uygulamayı Çalıştırma:**
-    *   **Visual Studio:** `F5` tuşuna basın veya Debug menüsünden `Start Debugging`'i seçin.
-    *   **.NET CLI:** Projenin kök dizininde aşağıdaki komutu çalıştırın:
+5.  **UygulamayÄ± Ã‡alÄ±ÅŸtÄ±rma:**
+    *   **Visual Studio:** `F5` tuÅŸuna basÄ±n veya Debug menÃ¼sÃ¼nden `Start Debugging`'i seÃ§in.
+    *   **.NET CLI:** Projenin kÃ¶k dizininde aÅŸaÄŸÄ±daki komutu Ã§alÄ±ÅŸtÄ±rÄ±n:
         ```bash
         dotnet run
         ```
-    *   Uygulama varsayılan olarak belirtilen portta (örn. `https://localhost:5001` veya `http://localhost:5000`) çalışmaya başlayacaktır. Tarayıcınızda bu adresi açın.
+    *   Uygulama varsayÄ±lan olarak belirtilen portta (Ã¶rn. `https://localhost:5001` veya `http://localhost:5000`) Ã§alÄ±ÅŸmaya baÅŸlayacaktÄ±r. TarayÄ±cÄ±nÄ±zda bu adresi aÃ§Ä±n.
