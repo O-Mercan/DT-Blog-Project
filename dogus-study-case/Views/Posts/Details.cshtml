@@ -1,0 +1,142 @@
+﻿@model dogus_study_case.Models.BlogPost
+
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<h1>@Html.DisplayFor(model => model.Title)</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        @* Kategori Adı *@
+        <dt class="col-sm-2">Kategori</dt>
+        <dd class="col-sm-10">
+            @(Model.Category?.Name ?? "-")
+            @if (Model.Category != null)
+            {
+                <a asp-controller="Posts" asp-action="Index" asp-route-categoryId="@Model.CategoryId" class="badge bg-secondary text-decoration-none ms-2">
+                    <i class="fas fa-tag"></i> Diğer @Model.Category.Name Yazıları
+                </a>
+            }
+        </dd>
+
+        @* Yazar Kullanıcı Adı *@
+        <dt class="col-sm-2">Yazar</dt>
+        <dd class="col-sm-10">
+            @(Model.User?.UserName ?? "Bilinmiyor")
+        </dd>
+
+        @* Yayınlanma Tarihi *@
+        <dt class="col-sm-2">Yayınlanma Tarihi</dt>
+        <dd class="col-sm-10">
+            @Model.PublicationDate.ToString("dd MMMM yyyy, HH:mm")
+        </dd>
+
+        @* Görsel  *@
+        @if (!string.IsNullOrEmpty(Model.ImagePath))
+        {
+            <dt class="col-sm-2">Görsel</dt>
+            <dd class="col-sm-10">
+                <img src="@Url.Content("~/" + Model.ImagePath.Replace("\\", "/"))" alt="@Model.Title" class="img-fluid rounded mb-3" style="max-width: 400px;" /> @* Max genişlik ekleyelim *@
+            </dd>
+        }
+
+        @* İçerik  *@
+        <dt class="col-sm-12 mt-3">İçerik</dt> @* Tam genişlik ve üst boşluk *@
+        <dd class="col-sm-12">
+            @Html.Raw(Model.Content) 
+        </dd>
+    </dl>
+</div>
+
+
+@* --- YORUMLAR BÖLÜMÜ ---  *@
+<hr />
+<div class="row mt-4">
+    <div class="col-md-10 offset-md-1">
+        <h4>Yorumlar (@Model.Comments?.Count ?? 0)</h4>
+
+        @* --- Yeni Yorum Ekleme Formu (Sadece Giriş Yapanlar İçin) --- *@
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <div class="card my-4 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Yorum Yaz</h5>
+                    <form asp-controller="Posts" asp-action="AddComment" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="BlogPostId" value="@Model.Id" />
+
+                        <div class="mb-3">
+                            <textarea id="CommentContent" name="Content" class="form-control" rows="3" placeholder="Yorumunuzu buraya yazın..." required minlength="3" maxlength="1000"></textarea>
+                        </div>
+
+                        @if (TempData["CommentError"] != null) 
+                        {
+                            <div class="alert alert-danger alert-sm py-1">@TempData["CommentError"]</div>
+                        }
+                        @if (TempData["CommentSuccess"] != null) 
+                        {
+                            <div class="alert alert-success alert-sm py-1">@TempData["CommentSuccess"]</div>
+                        }
+
+
+                        <button type="submit" class="btn btn-primary btn-sm">Yorumu Gönder</button>
+                    </form>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-secondary my-4" role="alert">
+                Yorum yapmak için lütfen <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Url.Action("Details", "Posts", new { id = Model.Id })" class="alert-link">giriş yapın</a> veya <a asp-area="Identity" asp-page="/Account/Register" asp-route-returnUrl="@Url.Action("Details", "Posts", new { id = Model.Id })" class="alert-link">kayıt olun</a>.
+            </div>
+        }
+
+        @* --- Mevcut Yorumları Listeleme --- *@
+        <div id="commentsList">
+            @if (Model.Comments != null && Model.Comments.Any())
+            {
+                @foreach (var comment in Model.Comments.OrderByDescending(c => c.CommentDate)) // En yeniden eskiye sırala
+                {
+                    <div class="card mb-3 bg-light">
+                        <div class="card-body">
+                            <p class="card-text">@comment.Content</p>
+                        </div>
+                        <div class="card-footer text-muted py-1" style="font-size: 0.8em;">
+                            <i class="far fa-user me-1"></i> @(comment.User?.UserName ?? "Bilinmeyen Kullanıcı")
+                            <span class="mx-2">|</span>
+                            <i class="far fa-clock me-1"></i> @comment.CommentDate.ToString("dd MMM yyyy, HH:mm")
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <p><em>Bu yazı için henüz yorum yapılmamış. İlk yorumu siz yapın!</em></p>
+            }
+        </div> 
+    </div>
+</div>
+@* --- YORUMLAR BÖLÜMÜ SONU --- *@
+
+<hr />
+<div class="mt-4 mb-5">
+
+    @if (User.Identity != null && User.Identity.IsAuthenticated && Model.UserId == UserManager.GetUserId(User))
+    {
+        <a asp-controller="Posts" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Düzenle</a>
+        <span class="mx-1">|</span> 
+    }
+    <a asp-controller="Posts" asp-action="Index" class="btn btn-secondary">Listeye Geri Dön</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

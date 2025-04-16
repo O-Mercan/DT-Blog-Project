@@ -1,0 +1,65 @@
+﻿@model IEnumerable<dogus_study_case.Models.BlogPost>
+@using Microsoft.AspNetCore.Identity
+@using dogus_study_case.Models 
+
+@{
+    ViewData["Title"] = "Blog Yazıları";
+    var currentFilterId = ViewBag.SelectedCategoryId as int?;
+}
+
+@* Sayfa başlığı ve Yeni Yazı Ekle butonu *@
+<div class="row mb-3">
+    <div class="col-md-6">
+        <h1>@ViewData["Title"]</h1>
+    </div>
+    <div class="col-md-6 text-md-end">
+        @if (User.Identity != null && User.Identity.IsAuthenticated)
+        {
+            <a asp-controller="Posts" asp-action="Create" class="btn btn-success">
+                <i class="fas fa-plus"></i> Yeni Yazı Ekle
+            </a>
+        }
+    </div>
+</div>
+
+
+@* --- KATEGORİ FİLTRESİ ALANI --- *@
+<div class="mb-4">
+    <h5>Kategoriler:</h5>
+    <a asp-controller="Posts" asp-action="Index" asp-route-categoryId=""
+       class="btn btn-sm @(currentFilterId == null ? "btn-primary" : "btn-outline-secondary") me-1 mb-1">
+        Tümü
+    </a>
+    @if (ViewBag.Categories is IEnumerable<Category> categories)
+    {
+        @foreach (var category in categories)
+        {
+            <a asp-controller="Posts" asp-action="Index" asp-route-categoryId="@category.Id"
+               class="btn btn-sm @(currentFilterId == category.Id ? "btn-primary" : "btn-outline-secondary") me-1 mb-1">
+                @category.Name
+            </a>
+        }
+    }
+    else
+    {
+        <span class="text-muted fst-italic">Kategoriler yüklenemedi.</span>
+    }
+</div>
+<hr />
+
+@* Blog Yazıları Listesi (Card Yapısı) *@
+@if (!Model.Any())
+{
+    <div class="alert alert-warning" role="alert">
+        Gösterilecek blog yazısı bulunamadı @(currentFilterId != null ? "bu kategoride" : "").
+    </div>
+}
+else
+{
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        @foreach (var item in Model)
+        {
+            <partial name="_BlogPostCard" model="item" />
+        }
+    </div>
+}

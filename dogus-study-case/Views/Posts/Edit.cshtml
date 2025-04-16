@@ -1,0 +1,81 @@
+﻿@model dogus_study_case.ViewModels.BlogPostEditViewModel
+
+@{
+    ViewData["Title"] = "Blog Yazısını Düzenle";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h4>"@Model.Title" Başlıklı Yazı</h4>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+
+            <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+            <input type="hidden" asp-for="Id" />
+
+            <input type="hidden" asp-for="ExistingImagePath" />
+
+            @* Başlık Alanı  *@
+            <div class="form-group mb-3">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            @* İçerik Alanı  *@
+            <div class="form-group mb-3">
+                <label asp-for="Content" class="control-label"></label>
+                <textarea asp-for="Content" class="form-control" rows="10"></textarea>
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+
+            @* Kategori Seçim Alanı  *@
+            <div class="form-group mb-3">
+                <label asp-for="CategoryId" class="control-label"></label> 
+                <select asp-for="CategoryId" class="form-select" asp-items="ViewBag.Categories">
+                    <option value="">-- Kategori Seçiniz --</option>
+                </select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+
+            @* Mevcut Görseli Gösterme Alanı *@
+            @if (!string.IsNullOrEmpty(Model.ExistingImagePath))
+            {
+                <div class="mb-3">
+                    <label class="form-label">Mevcut Görsel:</label><br />
+                    <img src="@Url.Content("~/" + Model.ExistingImagePath.Replace("\\", "/"))" alt="Mevcut Görsel" class="img-thumbnail" style="max-width: 200px; max-height: 200px;" />
+                     İsteğe bağlı: Görseli kaldırma seçeneği
+                       <div class="form-check mt-2">
+                           <input type="checkbox" class="form-check-input" id="removeImage" name="removeImage" value="true">
+                           <label class="form-check-label" for="removeImage">Mevcut Görseli Kaldır</label>
+                       </div>
+
+                </div>
+            }
+
+            @* Yeni Görsel Yükleme Alanı *@
+            <div class="form-group mb-3">
+                <label asp-for="ImageFile" class="control-label"></label> 
+                <input asp-for="ImageFile" type="file" class="form-control" accept="image/png, image/jpeg, image/gif">
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+                <small class="form-text text-muted">Yeni bir görsel yüklerseniz mevcut görsel değiştirilir. İzin verilen formatlar: png, jpg, gif.</small>
+            </div>
+
+            @* Gönderme ve İptal Butonları *@
+            <div class="form-group mt-4">
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
+                <a asp-controller="Posts" asp-action="Index" class="btn btn-secondary">İptal</a> 
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,65 @@
+﻿@model dogus_study_case.ViewModels.BlogPostCreateViewModel
+
+@{
+    ViewData["Title"] = "Yeni Blog Yazısı Oluştur";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h4>Yeni Blog Yazısı Bilgileri</h4>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        @* Formun dosya gönderebilmesi için enctype ekliyoruz *@
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            @* CSRF koruması *@
+            @Html.AntiForgeryToken()
+
+            @* Validasyon özeti (Tüm hataları göstermek daha iyi olabilir) *@
+            <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+            @* Başlık Alanı (ViewModel'deki Title'a bağlanır) *@
+            <div class="form-group mb-3">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            @* İçerik Alanı (ViewModel'deki Content'e bağlanır) *@
+            <div class="form-group mb-3">
+                <label asp-for="Content" class="control-label"></label>
+                <textarea asp-for="Content" class="form-control" rows="10"></textarea>
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+
+            @* Kategori Seçim Alanı (ViewModel'deki CategoryId'ye bağlanır) *@
+            <div class="form-group mb-3">
+                <label asp-for="CategoryId" class="control-label"></label> 
+                <select asp-for="CategoryId" class="form-select" asp-items="ViewBag.Categories">
+                    <option value="">-- Kategori Seçiniz --</option>
+                </select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+
+            @* Görsel Yükleme Alanı *@
+            <div class="form-group mb-3">
+                <label asp-for="ImageFile" class="control-label"></label> 
+                <input asp-for="ImageFile" type="file" class="form-control" accept="image/png, image/jpeg, image/gif">
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+                <small class="form-text text-muted">İzin verilen formatlar: png, jpg, gif. Maksimum boyut: (Belirtilmedi).</small> 
+            </div>
+
+            @* Gönderme ve İptal Butonları *@
+            <div class="form-group mt-4">
+                <input type="submit" value="Oluştur" class="btn btn-success" />
+                <a asp-controller="Posts" asp-action="Index" class="btn btn-secondary">İptal</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
