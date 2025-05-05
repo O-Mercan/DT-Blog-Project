@@ -44,7 +44,7 @@ Bu blog sitesi, kullanıcıların kayıt olup giriş yapabildiği, blog yazılar
 *   **Frontend:**
     *   Razor Views
     *   HTML5 / CSS3
-    *   Bootstrap ([Sürüm]) - CSS Framework
+    *   Bootstrap  - CSS Framework
     *   JavaScript / jQuery (Varsayılan template ile gelir)
 *   **Diğer:**
     *   LibMan (İstemci Kütüphane Yönetimi)
@@ -55,7 +55,7 @@ Bu blog sitesi, kullanıcıların kayıt olup giriş yapabildiği, blog yazılar
 Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları takip edebilirsiniz:
 
 1.  **Ön Koşullar:**
-    *   [.NET SDK](https://dotnet.microsoft.com/download) ([Kullandığınız Sürüm])
+    *   [.NET SDK](https://dotnet.microsoft.com/download) 
     *   [SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads) (veya kullandığınız veritabanı motoru)
     *   Bir IDE (Visual Studio, VS Code, Rider vb.) veya .NET CLI
 
