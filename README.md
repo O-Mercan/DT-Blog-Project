@@ -33,8 +33,8 @@ Bu blog sitesi, kullanıcıların kayıt olup giriş yapabildiği, blog yazılar
 ## Kullanılan Teknolojiler
 
 *   **Backend:**
-    *   ASP.NET Core MVC ([.NET Sürümünüz, örn. .NET 6/7/8])
-    *   Entity Framework Core ([Sürüm]) - ORM
+    *   ASP.NET Core MVC ([.NET 8])
+    *   Entity Framework Core  - ORM
     *   ASP.NET Core Identity - Authentication & Authorization
     *   Repository Pattern - Veri Erişim Katmanı Soyutlaması
     *   Dependency Injection - Bağımlılık Yönetimi
